@@ -25,6 +25,15 @@ def exportar_csv(turnos):
         for data_a, data_b in turnos:
             escritor_csv.writerow([data_a.strftime('%d/%m/%Y'), data_b.strftime('%d/%m/%Y')])
 
+def exportar_txt(turnos):
+    with open('turnos.txt', mode='w') as arquivo:
+        arquivo.write('-' * 45)
+        arquivo.write('\n| {:^21} | {:^21} |\n'.format('Turno A', 'Turno B'))
+        arquivo.write('-' * 45 + '\n')
+        for data_a, data_b in turnos:
+            arquivo.write('| {:>11} | {:>11} |\n'.format(data_a.strftime('%d/%m/%Y'), data_b.strftime('%d/%m/%Y')))
+            arquivo.write('-' * 45 + '\n')
+
 # solicita a data do turno A
 data_turno_a = obter_data_turno('Digite a data do turno A (formato dd/mm/aaaa): ')
 
@@ -50,14 +59,22 @@ for i in range(num_turnos):
     print("Turno A:", nova_data_turno_a.strftime('%d/%m/%Y'), "- Turno B:", nova_data_turno_b.strftime('%d/%m/%Y'))
 
 print('\n')
-opcao = input('Deseja exportar a tabela para uma planilha do Excel? (S/N) ').upper()
-if opcao == 'S':
+opcao = input('Deseja exportar a tabela para uma planilha do Excel ou para um arquivo .txt? (E/T/N) ').upper()
+if opcao == 'E':
     turnos = []
     for i in range(num_turnos):
         nova_data_turno_a = nova_data_turno_b + timedelta(days=3)
         nova_data_turno_b = nova_data_turno_a + timedelta(days=1)
         turnos.append((nova_data_turno_a, nova_data_turno_b))
     exportar_csv(turnos)
+    print('Tabela exportada com sucesso.')
+elif opcao == 'T':
+    nome_arquivo = input('Digite o nome do arquivo a ser criado: ')
+    with open(nome_arquivo, mode='w') as arquivo:
+        for i in range(num_turnos):
+            nova_data_turno_a = nova_data_turno_b + timedelta(days=3)
+            nova_data_turno_b = nova_data_turno_a + timedelta(days=1)
+            arquivo.write(f'Turno A: {nova_data_turno_a.strftime("%d/%m/%Y")} - Turno B: {nova_data_turno_b.strftime("%d/%m/%Y")}\n')
     print('Tabela exportada com sucesso.')
 else:
     print('Operação cancelada pelo usuário.')
