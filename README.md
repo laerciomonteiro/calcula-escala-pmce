@@ -37,9 +37,6 @@ python3 calcula-escala.py
 ## Personalização
 - Ajuste o número de turnos futuros conforme necessidade operacional
 
-## Licença
-`MIT License` - Consulte o arquivo LICENSE para detalhes.
-
 ## Autor
 **Laércio Monteiro**  
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin)](https://www.linkedin.com/in/laercio-monteiro)
