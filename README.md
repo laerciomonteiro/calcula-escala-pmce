@@ -4,7 +4,7 @@ Ferramenta em Python para cálculo automático da escala de serviço do Patrulha
 
 ## Funcionalidades Principais
 - Cálculo automático dos turnos A e B
-- Suporte aos dois modelos de escala:
+- Suporte aos dois modelos de turno:
   - **12h/24h** (Plantão de 12 horas com 24 de descanso)
   - **12h/48h** (Plantão de 12 horas com 48 de descanso)
 - Geração de tabela cronológica com datas futuras de serviço
@@ -33,17 +33,6 @@ python3 calcula-escala.py
 - Data do turno A (DD/MM/AAAA)
 - Data do turno B (DD/MM/AAAA)
 - Quantidade de turnos futuros a serem exibidos
-
-2. Saída gerada:
-```bash
-+------------+-----------+-----------------------+
-| Data | Turno | Modelo de Escala |
-+------------+-----------+-----------------------+
-| 15/03/2025 | A | 12h/24h |
-| 16/03/2025 | Descanso | |
-| 17/03/2025 | B | 12h/24h |
-+------------+-----------+-----------------------+
-```
 
 ## Personalização
 - Ajuste o número de turnos futuros conforme necessidade operacional
